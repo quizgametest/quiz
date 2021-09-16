@@ -1,8 +1,8 @@
 package question
 
 import (
-    "encoding/json"
-    "strconv"
+	"encoding/json"
+	"strconv"
 )
 
 type QuestionObject struct {
@@ -18,14 +18,14 @@ type AnswerObject struct {
 }
 
 func (q QuestionObject) MarshalJSON() ([]byte, error) {
-    responseQuestion := struct{
-        Question string `json:"question"`
-        Answer map[string]string `json:"answer"`
-    }{Question: q.Question, Answer: map[string]string{}}
+	responseQuestion := struct {
+		Question string            `json:"question"`
+		Answer   map[string]string `json:"answer"`
+	}{Question: q.Question, Answer: map[string]string{}}
 
-    for i, a := range q.Answer {
-        responseQuestion.Answer[strconv.Itoa(i+1)] = a.Answer
-    }
+	for i, a := range q.Answer {
+		responseQuestion.Answer[strconv.Itoa(i+1)] = a.Answer
+	}
 
-    return json.Marshal(responseQuestion)
+	return json.Marshal(responseQuestion)
 }

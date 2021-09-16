@@ -1,5 +1,5 @@
 package response
 
 type AnswerResponse struct {
-    Right bool `json:"right"`
+	Right bool `json:"right"`
 }
